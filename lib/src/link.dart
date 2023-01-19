@@ -27,14 +27,14 @@ class NetworkdLink {
         .then((result) => result.asString());
   }
 
-  Future<String> get iPv4AddressState async {
+  Future<String> get ipv4AddressState async {
     return _object
         .getProperty(interfaceName, 'IPv4AddressState',
             signature: DBusSignature('s'))
         .then((result) => result.asString());
   }
 
-  Future<String> get iPv6AddressState async {
+  Future<String> get ipv6AddressState async {
     return _object
         .getProperty(interfaceName, 'IPv6AddressState',
             signature: DBusSignature('s'))
