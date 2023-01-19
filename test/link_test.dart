@@ -8,6 +8,19 @@ class MockDBusClient extends Mock implements DBusClient {}
 class MockDBusRemoteObject extends Mock implements DBusRemoteObject {}
 
 void main() {
+  test('get property', () async {
+    final object = createMockRemoteObject();
+    final link = NetworkdLink(object);
+
+    expect(await link.operationalState, equals('routable'));
+    expect(await link.carrierState, equals('carrier'));
+    expect(await link.addressState, equals('routable'));
+    expect(await link.ipv4AddressState, equals('routable'));
+    expect(await link.ipv6AddressState, equals('degraded'));
+    expect(await link.onlineState, equals('online'));
+    expect(await link.administrativeState, equals('configured'));
+    expect(await link.bitRates, equals([1, 2]));
+  });
   test('invoke void methods', () async {
     final object = createMockRemoteObject();
     final link = NetworkdLink(object);
@@ -60,14 +73,29 @@ void verifyVoidMethodCall(MockDBusRemoteObject object, String methodName,
         NetworkdLink.interfaceName, methodName, values,
         replySignature: DBusSignature(''))).called(1);
 
-MockDBusRemoteObject createMockRemoteObject({
-  Map<String, DBusValue>? properties,
-}) {
+void verifyGetPropertyCall(MockDBusRemoteObject object, String propertyName) =>
+    verify(() => object.getProperty(NetworkdLink.interfaceName, propertyName))
+        .called(1);
+
+MockDBusRemoteObject createMockRemoteObject() {
   final object = MockDBusRemoteObject();
+  final properties = {
+    'OperationalState': const DBusString('routable'),
+    'CarrierState': const DBusString('carrier'),
+    'AddressState': const DBusString('routable'),
+    'IPv4AddressState': const DBusString('routable'),
+    'IPv6AddressState': const DBusString('degraded'),
+    'OnlineState': const DBusString('online'),
+    'NamespaceId': const DBusUint64(1337),
+    'AdministrativeState': const DBusString('configured'),
+    'BitRates': DBusStruct([DBusUint64(1), DBusUint64(2)]),
+  };
 
   when(() => object.propertiesChanged).thenAnswer((_) => const Stream.empty());
-  when(() => object.getAllProperties(NetworkdLink.interfaceName))
-      .thenAnswer((_) async => properties ?? {});
+  when(() => object.getProperty(
+          NetworkdLink.interfaceName, any(that: isA<String>()),
+          signature: any(named: 'signature')))
+      .thenAnswer((i) async => properties[i.positionalArguments[1]]!);
   const voidMethods = [
     'SetNTP',
     'SetDefaultRoute',
