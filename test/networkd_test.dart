@@ -102,6 +102,18 @@ void main() {
     await manager.reload();
     verifyVoidMethodCall(object, 'Reload', []);
   });
+
+  test('get links', () async {
+    final object = createMockRemoteObject();
+    final manager = NetworkdManager(object: object);
+    await manager.connect();
+    addTearDown(() async => await manager.close());
+
+    final links = await manager.listLinks();
+    expect(links.length, equals(2));
+    expect(links.first.toString(),
+        equals('NetworkdLink(/org/freedesktop/network1/link/_326)'));
+  });
 }
 
 void verifyVoidMethodCall(MockDBusRemoteObject object, String methodName,
@@ -140,6 +152,25 @@ MockDBusRemoteObject createMockRemoteObject({
           replySignature: DBusSignature('')))
       .thenAnswer((_) async => DBusMethodSuccessResponse());
   when(dbus.close).thenAnswer((_) async {});
+
+  final mockLinks = DBusArray(
+    DBusSignature.struct(['i', 's', 'o'].map((e) => DBusSignature(e))),
+    [
+      DBusStruct([
+        DBusInt32(32),
+        DBusString('eth0'),
+        DBusObjectPath('/org/freedesktop/network1/link/_326'),
+      ]),
+      DBusStruct([
+        DBusInt32(1),
+        DBusString('lo'),
+        DBusObjectPath('/org/freedesktop/network1/link/_31'),
+      ])
+    ],
+  );
+  when(() => object.callMethod(NetworkdManager.interfaceName, 'ListLinks', [],
+          replySignature: any(named: 'replySignature')))
+      .thenAnswer((_) async => DBusMethodSuccessResponse([mockLinks]));
 
   return object;
 }

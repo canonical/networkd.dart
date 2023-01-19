@@ -217,4 +217,6 @@ class NetworkdLink {
             allowInteractiveAuthorization: allowInteractiveAuthorization)
         .then((result) => result.returnValues.first.asString());
   }
+
+  String toString() => 'NetworkdLink(${_object.path.value})';
 }
