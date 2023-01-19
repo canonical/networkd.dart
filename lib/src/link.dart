@@ -72,6 +72,7 @@ class NetworkdLink {
         allowInteractiveAuthorization: allowInteractiveAuthorization);
   }
 
+  // TODO implement address model
   Future<void> setDNS(List<DBusStruct> addresses,
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
@@ -82,6 +83,7 @@ class NetworkdLink {
         allowInteractiveAuthorization: allowInteractiveAuthorization);
   }
 
+  // TODO implement address model
   Future<void> setDNSEx(List<DBusStruct> addresses,
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
@@ -92,6 +94,7 @@ class NetworkdLink {
         allowInteractiveAuthorization: allowInteractiveAuthorization);
   }
 
+  // TODO implement domain model
   Future<void> setDomains(List<DBusStruct> domains,
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
