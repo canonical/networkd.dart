@@ -145,7 +145,7 @@ class NetworkdManager {
             replySignature: DBusSignature(''),
             noAutoStart: noAutoStart,
             allowInteractiveAuthorization: allowInteractiveAuthorization)
-        .then((result) => result.returnValues);
+        .then((_) {});
   }
 
   // TODO implement address model
@@ -163,7 +163,7 @@ class NetworkdManager {
             replySignature: DBusSignature(''),
             noAutoStart: noAutoStart,
             allowInteractiveAuthorization: allowInteractiveAuthorization)
-        .then((result) => result.returnValues);
+        .then((_) {});
   }
 
   // TODO implement address model
@@ -182,7 +182,7 @@ class NetworkdManager {
             replySignature: DBusSignature(''),
             noAutoStart: noAutoStart,
             allowInteractiveAuthorization: allowInteractiveAuthorization)
-        .then((result) => result.returnValues);
+        .then((_) {});
   }
 
   // TODO implement domain model
@@ -200,7 +200,7 @@ class NetworkdManager {
             replySignature: DBusSignature(''),
             noAutoStart: noAutoStart,
             allowInteractiveAuthorization: allowInteractiveAuthorization)
-        .then((result) => result.returnValues);
+        .then((_) {});
   }
 
   Future<void> setLinkDefaultRoute(int ifindex, bool enable,
@@ -212,7 +212,7 @@ class NetworkdManager {
             replySignature: DBusSignature(''),
             noAutoStart: noAutoStart,
             allowInteractiveAuthorization: allowInteractiveAuthorization)
-        .then((result) => result.returnValues);
+        .then((_) {});
   }
 
   Future<void> setLinkLLMNR(int ifindex, String mode,
@@ -224,7 +224,7 @@ class NetworkdManager {
             replySignature: DBusSignature(''),
             noAutoStart: noAutoStart,
             allowInteractiveAuthorization: allowInteractiveAuthorization)
-        .then((result) => result.returnValues);
+        .then((_) {});
   }
 
   Future<void> setLinkMulticastDNS(int ifindex, String mode,
@@ -236,7 +236,7 @@ class NetworkdManager {
             replySignature: DBusSignature(''),
             noAutoStart: noAutoStart,
             allowInteractiveAuthorization: allowInteractiveAuthorization)
-        .then((result) => result.returnValues);
+        .then((_) {});
   }
 
   Future<void> setLinkDNSOverTLS(int ifindex, String mode,
@@ -248,7 +248,7 @@ class NetworkdManager {
             replySignature: DBusSignature(''),
             noAutoStart: noAutoStart,
             allowInteractiveAuthorization: allowInteractiveAuthorization)
-        .then((result) => result.returnValues);
+        .then((_) {});
   }
 
   Future<void> setLinkDNSSEC(int ifindex, String mode,
@@ -260,7 +260,7 @@ class NetworkdManager {
             replySignature: DBusSignature(''),
             noAutoStart: noAutoStart,
             allowInteractiveAuthorization: allowInteractiveAuthorization)
-        .then((result) => result.returnValues);
+        .then((_) {});
   }
 
   Future<void> setLinkDNSSECNegativeTrustAnchors(
@@ -273,7 +273,7 @@ class NetworkdManager {
             replySignature: DBusSignature(''),
             noAutoStart: noAutoStart,
             allowInteractiveAuthorization: allowInteractiveAuthorization)
-        .then((result) => result.returnValues);
+        .then((_) {});
   }
 
   Future<void> revertLinkNTP(int ifindex,
@@ -284,7 +284,7 @@ class NetworkdManager {
             replySignature: DBusSignature(''),
             noAutoStart: noAutoStart,
             allowInteractiveAuthorization: allowInteractiveAuthorization)
-        .then((result) => result.returnValues);
+        .then((_) {});
   }
 
   Future<void> revertLinkDNS(int ifindex,
@@ -295,7 +295,7 @@ class NetworkdManager {
             replySignature: DBusSignature(''),
             noAutoStart: noAutoStart,
             allowInteractiveAuthorization: allowInteractiveAuthorization)
-        .then((result) => result.returnValues);
+        .then((_) {});
   }
 
   Future<void> renewLink(int ifindex,
@@ -306,7 +306,7 @@ class NetworkdManager {
             replySignature: DBusSignature(''),
             noAutoStart: noAutoStart,
             allowInteractiveAuthorization: allowInteractiveAuthorization)
-        .then((result) => result.returnValues);
+        .then((_) {});
   }
 
   Future<void> forceRenewLink(int ifindex,
@@ -317,7 +317,7 @@ class NetworkdManager {
             replySignature: DBusSignature(''),
             noAutoStart: noAutoStart,
             allowInteractiveAuthorization: allowInteractiveAuthorization)
-        .then((result) => result.returnValues);
+        .then((_) {});
   }
 
   Future<void> reconfigureLink(int ifindex,
@@ -328,7 +328,7 @@ class NetworkdManager {
             replySignature: DBusSignature(''),
             noAutoStart: noAutoStart,
             allowInteractiveAuthorization: allowInteractiveAuthorization)
-        .then((result) => result.returnValues);
+        .then((_) {});
   }
 
   Future<void> reload(
@@ -339,7 +339,7 @@ class NetworkdManager {
             replySignature: DBusSignature(''),
             noAutoStart: noAutoStart,
             allowInteractiveAuthorization: allowInteractiveAuthorization)
-        .then((result) => result.returnValues);
+        .then((_) {});
   }
 
   Future<String> describeLink(int ifindex,
