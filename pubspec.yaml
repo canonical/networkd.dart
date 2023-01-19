@@ -1,13 +1,13 @@
 name: networkd
-description: A sample command-line application.
+description: A native Dart client library to access systemd-networkd.
+repository: https://github.com/d-loose/networkd.dart
 version: 0.1.0
-# homepage: https://www.exampl0.1om
 
 environment:
   sdk: '>=2.18.6 <3.0.0'
 
-# dependencies:
-#   path: ^1.8.0
+platforms:
+  linux:
 
 dev_dependencies:
   lints: ^2.0.0
@@ -15,3 +15,4 @@ dev_dependencies:
 dependencies:
   dbus: ^0.7.8
   meta: ^1.8.0
+  mocktail: ^0.3.0
