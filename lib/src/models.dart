@@ -1,3 +1,4 @@
+/// Description of a Manager object.
 class NetworkdManagerDescription {
   List<NetworkdLinkDescription>? interfaces;
   List<RoutingPolicyRule>? routingPolicyRules;
@@ -20,6 +21,7 @@ class NetworkdManagerDescription {
   }
 }
 
+/// Description of a Link object.
 class NetworkdLinkDescription {
   int? index;
   String? name;
@@ -151,6 +153,7 @@ class NetworkdLinkDescription {
   }
 }
 
+/// A network address.
 class Address {
   int? family;
   List<int>? address;
@@ -199,6 +202,7 @@ class Address {
   }
 }
 
+/// A network route.
 class Route {
   int? family;
   List<int>? destination;
@@ -268,6 +272,7 @@ class Route {
   }
 }
 
+/// A DNS address.
 class DNS {
   int? family;
   List<int>? address;
@@ -284,6 +289,7 @@ class DNS {
   }
 }
 
+/// A search domain.
 class SearchDomain {
   String? domain;
   String? configSource;
@@ -298,20 +304,22 @@ class SearchDomain {
   }
 }
 
+/// DNS settings.
 class DNSSettings {
-  String? lLMNR;
+  String? llmnr;
   String? configSource;
-  String? mDNS;
+  String? mdns;
 
-  DNSSettings({this.lLMNR, this.configSource, this.mDNS});
+  DNSSettings({this.llmnr, this.configSource, this.mdns});
 
   DNSSettings.fromJson(Map<String, dynamic> json) {
-    lLMNR = json['LLMNR'];
+    llmnr = json['LLMNR'];
     configSource = json['ConfigSource'];
-    mDNS = json['MDNS'];
+    mdns = json['MDNS'];
   }
 }
 
+/// A routing policy rule.
 class RoutingPolicyRule {
   int? family;
   int? protocol;

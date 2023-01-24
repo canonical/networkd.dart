@@ -8,6 +8,7 @@ import 'link.dart';
 import 'models.dart';
 import 'util.dart';
 
+/// The networkd Manager object.
 class NetworkdManager {
   NetworkdManager({
     DBusClient? bus,
@@ -68,14 +69,28 @@ class NetworkdManager {
     }
   }
 
+  /// The current operational state.
   String get operationalState => _getProperty('OperationalState', '');
+
+  /// The current carrier state.
   String get carrierState => _getProperty('CarrierState', '');
+
+  /// The current address state.
   String get addressState => _getProperty('AddressState', '');
+
+  /// The current IPv4 address state.
   String get ipv4AddressState => _getProperty('IPv4AddressState', '');
+
+  /// The current IPv6 address state.
   String get ipv6AddressState => _getProperty('IPv6AddressState', '');
+
+  /// The current online state.
   String get onlineState => _getProperty('OnlineState', '');
+
+  /// The namespace ID.
   int get namespaceId => _getProperty('NamespaceId', -1);
 
+  /// Lists all managed links.
   Future<List<NetworkdLink>> listLinks(
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
@@ -100,6 +115,7 @@ class NetworkdManager {
         );
   }
 
+  /// Returns a link specified by its [name].
   Future<NetworkdLink> getLinkByName(String name,
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
@@ -119,6 +135,7 @@ class NetworkdManager {
         );
   }
 
+  /// Returns a link specified by its [ifindex].
   Future<NetworkdLink> getLinkByIndex(int ifindex,
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
@@ -138,6 +155,7 @@ class NetworkdManager {
         );
   }
 
+  /// Sets a link's NTP servers.
   Future<void> setLinkNTP(int ifindex, List<String> servers,
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
@@ -150,8 +168,9 @@ class NetworkdManager {
         .then((_) {});
   }
 
-  // TODO implement address model
+  /// Sets a link's DNS addresses.
   Future<void> setLinkDNS(int ifindex, List<DBusStruct> addresses,
+      // TODO implement address model
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
     return _object
@@ -168,8 +187,9 @@ class NetworkdManager {
         .then((_) {});
   }
 
-  // TODO implement address model
+  /// Sets a link's DNS addresses.
   Future<void> setLinkDNSEx(int ifindex, List<DBusStruct> addresses,
+      // TODO implement address model
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
     return _object
@@ -187,8 +207,9 @@ class NetworkdManager {
         .then((_) {});
   }
 
-  // TODO implement domain model
+  /// Sets a link's domains.
   Future<void> setLinkDomains(int ifindex, List<DBusStruct> domains,
+      // TODO implement domain model
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
     return _object
@@ -205,6 +226,7 @@ class NetworkdManager {
         .then((_) {});
   }
 
+  /// Sets a link's default route status.
   Future<void> setLinkDefaultRoute(int ifindex, bool enable,
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
@@ -217,6 +239,7 @@ class NetworkdManager {
         .then((_) {});
   }
 
+  /// Sets a link's LLMNR mode.
   Future<void> setLinkLLMNR(int ifindex, String mode,
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
@@ -229,6 +252,7 @@ class NetworkdManager {
         .then((_) {});
   }
 
+  /// Sets a link's multicast DNS mode.
   Future<void> setLinkMulticastDNS(int ifindex, String mode,
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
@@ -241,6 +265,7 @@ class NetworkdManager {
         .then((_) {});
   }
 
+  /// Sets a link's DNS over TLS mode.
   Future<void> setLinkDNSOverTLS(int ifindex, String mode,
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
@@ -253,6 +278,7 @@ class NetworkdManager {
         .then((_) {});
   }
 
+  /// Sets a link's DNSSEC mode.
   Future<void> setLinkDNSSEC(int ifindex, String mode,
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
@@ -265,6 +291,7 @@ class NetworkdManager {
         .then((_) {});
   }
 
+  /// Sets a link's DNSSEC NTAs.
   Future<void> setLinkDNSSECNegativeTrustAnchors(
       int ifindex, List<String> names,
       {bool noAutoStart = false,
@@ -278,6 +305,7 @@ class NetworkdManager {
         .then((_) {});
   }
 
+  /// Reverts a link's NTP servers.
   Future<void> revertLinkNTP(int ifindex,
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
@@ -289,6 +317,7 @@ class NetworkdManager {
         .then((_) {});
   }
 
+  /// Reverts a link's DNS addresses.
   Future<void> revertLinkDNS(int ifindex,
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
@@ -300,6 +329,7 @@ class NetworkdManager {
         .then((_) {});
   }
 
+  /// Renews a link.
   Future<void> renewLink(int ifindex,
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
@@ -311,6 +341,7 @@ class NetworkdManager {
         .then((_) {});
   }
 
+  /// Forcibly renews a link.
   Future<void> forceRenewLink(int ifindex,
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
@@ -322,6 +353,7 @@ class NetworkdManager {
         .then((_) {});
   }
 
+  /// Reconfigures a link.
   Future<void> reconfigureLink(int ifindex,
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
@@ -333,6 +365,7 @@ class NetworkdManager {
         .then((_) {});
   }
 
+  /// Reload
   Future<void> reload(
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
@@ -344,6 +377,7 @@ class NetworkdManager {
         .then((_) {});
   }
 
+  /// Returns a link's description.
   Future<NetworkdLinkDescription> describeLink(int ifindex,
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
@@ -356,6 +390,7 @@ class NetworkdManager {
             json.decode(result.returnValues.first.asString())));
   }
 
+  /// Returns the manager's description.
   Future<NetworkdManagerDescription> describe(
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
