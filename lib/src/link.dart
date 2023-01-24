@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:dbus/dbus.dart';
+import 'package:networkd/src/models.dart';
 
 class NetworkdLink {
   NetworkdLink(this._object);
@@ -207,7 +210,7 @@ class NetworkdLink {
         allowInteractiveAuthorization: allowInteractiveAuthorization);
   }
 
-  Future<String> describe(
+  Future<NetworkdLinkDescription> describe(
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
     return _object
@@ -215,8 +218,10 @@ class NetworkdLink {
             replySignature: DBusSignature('s'),
             noAutoStart: noAutoStart,
             allowInteractiveAuthorization: allowInteractiveAuthorization)
-        .then((result) => result.returnValues.first.asString());
+        .then((result) => NetworkdLinkDescription.fromJson(
+            json.decode(result.returnValues.first.asString())));
   }
 
+  @override
   String toString() => 'NetworkdLink(${_object.path.value})';
 }

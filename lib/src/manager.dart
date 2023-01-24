@@ -1,8 +1,10 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:dbus/dbus.dart';
 import 'package:meta/meta.dart';
 import 'package:networkd/src/link.dart';
+import 'package:networkd/src/models.dart';
 
 import 'util.dart';
 
@@ -342,7 +344,7 @@ class NetworkdManager {
         .then((_) {});
   }
 
-  Future<String> describeLink(int ifindex,
+  Future<NetworkdLinkDescription> describeLink(int ifindex,
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
     return _object
@@ -350,10 +352,11 @@ class NetworkdManager {
             replySignature: DBusSignature('s'),
             noAutoStart: noAutoStart,
             allowInteractiveAuthorization: allowInteractiveAuthorization)
-        .then((result) => result.returnValues.first.asString());
+        .then((result) => NetworkdLinkDescription.fromJson(
+            json.decode(result.returnValues.first.asString())));
   }
 
-  Future<String> describe(
+  Future<NetworkdManagerDescription> describe(
       {bool noAutoStart = false,
       bool allowInteractiveAuthorization = false}) async {
     return _object
@@ -361,6 +364,7 @@ class NetworkdManager {
             replySignature: DBusSignature('s'),
             noAutoStart: noAutoStart,
             allowInteractiveAuthorization: allowInteractiveAuthorization)
-        .then((result) => result.returnValues.first.asString());
+        .then((result) => NetworkdManagerDescription.fromJson(
+            json.decode(result.returnValues.first.asString())));
   }
 }
