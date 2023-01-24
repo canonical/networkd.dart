@@ -18,18 +18,6 @@ class NetworkdManagerDescription {
       });
     }
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (interfaces != null) {
-      data['Interfaces'] = interfaces!.map((v) => v.toJson()).toList();
-    }
-    if (routingPolicyRules != null) {
-      data['RoutingPolicyRules'] =
-          routingPolicyRules!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
 }
 
 class NetworkdLinkDescription {
@@ -161,54 +149,6 @@ class NetworkdLinkDescription {
       });
     }
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['Index'] = index;
-    data['Name'] = name;
-    data['Type'] = type;
-    data['Flags'] = flags;
-    data['FlagsString'] = flagsString;
-    data['KernelOperationalState'] = kernelOperationalState;
-    data['KernelOperationalStateString'] = kernelOperationalStateString;
-    data['MTU'] = mtu;
-    data['MinimumMTU'] = minimumMTU;
-    data['MaximumMTU'] = maximumMTU;
-    data['AdministrativeState'] = administrativeState;
-    data['OperationalState'] = operationalState;
-    data['CarrierState'] = carrierState;
-    data['AddressState'] = addressState;
-    data['IPv4AddressState'] = ipv4AddressState;
-    data['IPv6AddressState'] = ipv6AddressState;
-    data['OnlineState'] = onlineState;
-    if (addresses != null) {
-      data['Addresses'] = addresses!.map((v) => v.toJson()).toList();
-    }
-    if (routes != null) {
-      data['Routes'] = routes!.map((v) => v.toJson()).toList();
-    }
-    data['Kind'] = kind;
-    data['HardwareAddress'] = hardwareAddress;
-    data['BroadcastAddress'] = broadcastAddress;
-    data['IPv6LinkLocalAddress'] = ipv6LinkLocalAddress;
-    data['NetworkFile'] = networkFile;
-    data['RequiredForOnline'] = requiredForOnline;
-    data['RequiredOperationalStateForOnline'] =
-        requiredOperationalStateForOnline;
-    data['RequiredFamilyForOnline'] = requiredFamilyForOnline;
-    data['ActivationPolicy'] = activationPolicy;
-    data['LinkFile'] = linkFile;
-    if (dns != null) {
-      data['DNS'] = dns!.map((v) => v.toJson()).toList();
-    }
-    if (searchDomains != null) {
-      data['SearchDomains'] = searchDomains!.map((v) => v.toJson()).toList();
-    }
-    if (dnsSettings != null) {
-      data['DNSSettings'] = dnsSettings!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
 }
 
 class Address {
@@ -256,24 +196,6 @@ class Address {
     preferredLifetimeUsec = json['PreferredLifetimeUsec'];
     validLifetimeUsec = json['ValidLifetimeUsec'];
     configProvider = json['ConfigProvider']?.cast<int>();
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['Family'] = family;
-    data['Address'] = address;
-    data['PrefixLength'] = prefixLength;
-    data['Scope'] = scope;
-    data['ScopeString'] = scopeString;
-    data['Flags'] = flags;
-    data['FlagsString'] = flagsString;
-    data['ConfigSource'] = configSource;
-    data['ConfigState'] = configState;
-    data['Broadcast'] = broadcast;
-    data['PreferredLifetimeUsec'] = preferredLifetimeUsec;
-    data['ValidLifetimeUsec'] = validLifetimeUsec;
-    data['ConfigProvider'] = configProvider;
-    return data;
   }
 }
 
@@ -344,31 +266,6 @@ class Route {
     gateway = json['Gateway']?.cast<int>();
     configProvider = json['ConfigProvider']?.cast<int>();
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['Family'] = family;
-    data['Destination'] = destination;
-    data['DestinationPrefixLength'] = destinationPrefixLength;
-    data['PreferredSource'] = preferredSource;
-    data['Scope'] = scope;
-    data['ScopeString'] = scopeString;
-    data['Protocol'] = protocol;
-    data['ProtocolString'] = protocolString;
-    data['Type'] = type;
-    data['TypeString'] = typeString;
-    data['Priority'] = priority;
-    data['Table'] = table;
-    data['TableString'] = tableString;
-    data['Preference'] = preference;
-    data['Flags'] = flags;
-    data['FlagsString'] = flagsString;
-    data['ConfigSource'] = configSource;
-    data['ConfigState'] = configState;
-    data['Gateway'] = gateway;
-    data['ConfigProvider'] = configProvider;
-    return data;
-  }
 }
 
 class DNS {
@@ -385,15 +282,6 @@ class DNS {
     configSource = json['ConfigSource'];
     configProvider = json['ConfigProvider']?.cast<int>();
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['Family'] = family;
-    data['Address'] = address;
-    data['ConfigSource'] = configSource;
-    data['ConfigProvider'] = configProvider;
-    return data;
-  }
 }
 
 class SearchDomain {
@@ -408,14 +296,6 @@ class SearchDomain {
     configSource = json['ConfigSource'];
     configProvider = json['ConfigProvider']?.cast<int>();
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['Domain'] = domain;
-    data['ConfigSource'] = configSource;
-    data['ConfigProvider'] = configProvider;
-    return data;
-  }
 }
 
 class DNSSettings {
@@ -429,14 +309,6 @@ class DNSSettings {
     lLMNR = json['LLMNR'];
     configSource = json['ConfigSource'];
     mDNS = json['MDNS'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['LLMNR'] = lLMNR;
-    data['ConfigSource'] = configSource;
-    data['MDNS'] = mDNS;
-    return data;
   }
 }
 
@@ -494,26 +366,5 @@ class RoutingPolicyRule {
     invert = json['Invert'];
     configSource = json['ConfigSource'];
     configState = json['ConfigState'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['Family'] = family;
-    data['Protocol'] = protocol;
-    data['ProtocolString'] = protocolString;
-    data['TOS'] = tOS;
-    data['Type'] = type;
-    data['TypeString'] = typeString;
-    data['IPProtocol'] = iPProtocol;
-    data['IPProtocolString'] = iPProtocolString;
-    data['Priority'] = priority;
-    data['FirewallMark'] = firewallMark;
-    data['FirewallMask'] = firewallMask;
-    data['Table'] = table;
-    data['TableString'] = tableString;
-    data['Invert'] = invert;
-    data['ConfigSource'] = configSource;
-    data['ConfigState'] = configState;
-    return data;
   }
 }
