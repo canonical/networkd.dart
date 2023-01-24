@@ -3,9 +3,9 @@ import 'dart:convert';
 
 import 'package:dbus/dbus.dart';
 import 'package:meta/meta.dart';
-import 'package:networkd/src/link.dart';
-import 'package:networkd/src/models.dart';
 
+import 'link.dart';
+import 'models.dart';
 import 'util.dart';
 
 class NetworkdManager {

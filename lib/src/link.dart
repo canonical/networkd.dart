@@ -1,7 +1,8 @@
 import 'dart:convert';
 
 import 'package:dbus/dbus.dart';
-import 'package:networkd/src/models.dart';
+
+import 'models.dart';
 
 class NetworkdLink {
   NetworkdLink(this._object);
