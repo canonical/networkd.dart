@@ -316,11 +316,11 @@ class RoutingPolicyRule {
   int? family;
   int? protocol;
   String? protocolString;
-  int? tOS;
+  int? tos;
   int? type;
   String? typeString;
-  int? iPProtocol;
-  String? iPProtocolString;
+  int? ipProtocol;
+  String? ipProtocolString;
   int? priority;
   int? firewallMark;
   int? firewallMask;
@@ -334,11 +334,11 @@ class RoutingPolicyRule {
     this.family,
     this.protocol,
     this.protocolString,
-    this.tOS,
+    this.tos,
     this.type,
     this.typeString,
-    this.iPProtocol,
-    this.iPProtocolString,
+    this.ipProtocol,
+    this.ipProtocolString,
     this.priority,
     this.firewallMark,
     this.firewallMask,
@@ -353,11 +353,11 @@ class RoutingPolicyRule {
     family = json['Family'];
     protocol = json['Protocol'];
     protocolString = json['ProtocolString'];
-    tOS = json['TOS'];
+    tos = json['TOS'];
     type = json['Type'];
     typeString = json['TypeString'];
-    iPProtocol = json['IPProtocol'];
-    iPProtocolString = json['IPProtocolString'];
+    ipProtocol = json['IPProtocol'];
+    ipProtocolString = json['IPProtocolString'];
     priority = json['Priority'];
     firewallMark = json['FirewallMark'];
     firewallMask = json['FirewallMask'];
