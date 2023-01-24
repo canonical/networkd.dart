@@ -121,6 +121,10 @@ void main() {
     expect(dns.configSource, equals('DHCPv4'));
     expect(dns.family, equals(2));
 
+    final dnsSettings = linkDescription.dnsSettings!.first;
+    expect(dnsSettings.configSource, equals('static'));
+    expect(dnsSettings.llmnr, equals('yes'));
+
     final route = linkDescription.routes!.first;
     expect(route.configProvider, equals(null));
     expect(route.configSource, equals('foreign'));
